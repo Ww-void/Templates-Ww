@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven 项目的模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 定义父工程，继承 Spring Boot 官方提供的 parent POM -->
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId> <!-- 父项目的 artifactId -->
+        <groupId>org.springframework.boot</groupId> <!-- Spring Boot 的 groupId -->
+        <version>3.2.10</version> <!-- Spring Boot 的版本号，采用 3.2.10 版本 -->
+    </parent>
+
+    <!-- 项目基础信息 -->
+    <groupId>com.sky</groupId> <!-- 项目组 ID，一般为公司或组织的域名反转形式 -->
+    <artifactId>Templates</artifactId> <!-- 项目 artifactId，标识项目的唯一名称 -->
+    <packaging>pom</packaging> <!-- 打包方式为 pom，表示这是一个聚合工程（父工程） -->
+    <version>1.0-SNAPSHOT</version> <!-- 项目的版本号，使用 SNAPSHOT 表示开发版本 -->
+
+    <!-- 模块列表，定义聚合的子模块 -->
+    <modules>
+        <module>common</module> <!-- 子模块 common -->
+        <module>pojo</module> <!-- 子模块 pojo -->
+        <module>server</module> <!-- 子模块 server -->
+    </modules>
+
+    <!-- 属性定义部分，用于统一管理依赖的版本号，便于后续升级和维护 -->
+    <properties>
+        <mybatis.spring>3.0.3</mybatis.spring> <!-- MyBatis Spring Boot Starter 的版本 -->
+        <lombok>1.18.28</lombok> <!-- Lombok 的版本 -->
+        <fastjson>2.0.34</fastjson> <!-- fastjson 的版本 -->
+        <commons.lang3>3.12.0</commons.lang3> <!-- Apache Commons Lang3 的版本 -->
+        <druid>1.2.16</druid> <!-- Druid 数据库连接池的版本 -->
+        <pagehelper>1.4.1</pagehelper> <!-- PageHelper 的版本，用于分页功能 -->
+        <aliyun.sdk.oss>3.16.2</aliyun.sdk.oss> <!-- 阿里云 OSS SDK 的版本 -->
+        <knife4j>4.4.0</knife4j> <!-- Knife4j 的版本，用于生成 Swagger 文档 -->
+        <aspectj>1.9.20</aspectj> <!-- AspectJ 的版本，用于 AOP 功能 -->
+        <jjwt>0.9.1</jjwt> <!-- JJWT 的版本，用于 JWT（JSON Web Token）功能 -->
+        <jaxb-api>2.3.1</jaxb-api> <!-- JAXB API 的版本，用于处理 XML 数据 -->
+        <poi>5.2.2</poi> <!-- Apache POI 的版本，用于处理 Excel 文件 -->
+    </properties>
+
+    <!-- 依赖管理部分，统一管理依赖的版本，防止不同模块使用的版本不一致 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- MyBatis Spring Boot Starter 依赖 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring}</version>
+            </dependency>
+
+            <!-- Lombok 依赖，用于简化 Java 代码 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok}</version>
+            </dependency>
+
+            <!-- FastJSON 依赖，用于 JSON 解析和生成 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson}</version>
+            </dependency>
+
+            <!-- Apache Commons Lang3 依赖，提供了额外的 Java 工具类 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3}</version>
+            </dependency>
+
+            <!-- Druid 数据库连接池依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid}</version>
+            </dependency>
+
+            <!-- PageHelper 依赖，用于分页功能 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper}</version>
+            </dependency>
+
+            <!-- Knife4j 依赖，用于生成接口文档 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j}</version>
+            </dependency>
+
+            <!-- AspectJ 依赖，提供面向切面编程（AOP）功能 -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj}</version>
+            </dependency>
+
+            <!-- JJWT 依赖，用于生成和解析 JSON Web Tokens -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt}</version>
+            </dependency>
+
+            <!-- 阿里云 OSS SDK 依赖，用于阿里云对象存储服务 -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.sdk.oss}</version>
+            </dependency>
+
+            <!-- JAXB API 依赖，用于 XML 数据处理 -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api}</version>
+            </dependency>
+
+            <!-- Apache POI 依赖，用于处理 Excel 文件 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi}</version>
+            </dependency>
+
+            <!-- 微信支付依赖 -->
+            <dependency>
+                <groupId>com.github.wechatpay-apiv3</groupId>
+                <artifactId>wechatpay-apache-httpclient</artifactId>
+                <version>0.4.8</version> <!-- 微信支付的版本 -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

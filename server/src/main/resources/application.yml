@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+# springdoc-openapi（knife4j）项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html  #访问路径
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs #访问路径
+  group-configs:
+    - group: 'default' #默认分组
+      paths-to-match: '/**' #要映射的访问路径，我这里直接使用了通配符，所有都用，也可以根据自己不同业务的需要自己设置
+      packages-to-scan: com.wml.controller #要扫描的包路径，也可以根据组进行细分，我这里直接在controller下了
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      password:
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+alioss:
+  endpoint:
+  access-key-id:
+  access-key-secret:
+  bucket-name:
+
+
+robot:
+  name:
+  age:
+  email:
